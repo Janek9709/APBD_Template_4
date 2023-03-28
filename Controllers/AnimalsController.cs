@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Zadanie4.DTOs;
 
 namespace Zadanie4.Controllers
 {
@@ -33,7 +34,7 @@ namespace Zadanie4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post(AnimalDTO animal)
         {
             using (SqlConnection connection = new SqlConnection("Data Source=db-mssql16;Initial Catalog=sXXXXX;Integrated Security=True"))
             {
@@ -41,7 +42,7 @@ namespace Zadanie4.Controllers
 
                 using SqlCommand command = new SqlCommand("INSERT INTO ... VALUES (@Name...", connection);
 
-                command.Parameters.AddWithValue("@param", "...");
+                command.Parameters.AddWithValue("@Name", "...");
 
                 var numberOfRows = (int?)command.ExecuteNonQuery();
                 connection.Close();
