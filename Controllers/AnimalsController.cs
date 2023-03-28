@@ -15,7 +15,7 @@ namespace Zadanie4.Controllers
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand($"SELECT * FROM... {param}", connection);
+                using SqlCommand command = new SqlCommand($"SELECT * FROM... {param}", connection);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -39,7 +39,7 @@ namespace Zadanie4.Controllers
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("INSERT INTO ... VALUES (@Name...", connection);
+                using SqlCommand command = new SqlCommand("INSERT INTO ... VALUES (@Name...", connection);
 
                 command.Parameters.AddWithValue("@param", "...");
 
